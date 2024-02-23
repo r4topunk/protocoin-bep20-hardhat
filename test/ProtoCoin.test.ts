@@ -64,8 +64,9 @@ describe("ProtoCoin Tests", function () {
     const { protoCoin, owner, otherAccount } = await loadFixture(deployFixture)
 
     const instance = protoCoin.connect(otherAccount)
-    await expect(instance.transfer(owner, 1)).to.be.revertedWith(
-      "Insufficient balance."
+    await expect(instance.transfer(owner, 1)).to.be.revertedWithCustomError(
+      protoCoin,
+      "ERC20InsufficientBalance"
     )
   })
 
@@ -108,9 +109,10 @@ describe("ProtoCoin Tests", function () {
     const instance = protoCoin.connect(otherAccount)
     await instance.approve(owner, 1)
 
-    await expect(
-      protoCoin.transferFrom(otherAccount, owner, 1)
-    ).to.be.revertedWith("Insufficient balance.")
+    await expect(instance.transfer(owner, 1)).to.be.revertedWithCustomError(
+      protoCoin,
+      "ERC20InsufficientBalance"
+    )
   })
 
   it("Should NOT transfer from (allowance)", async function () {
@@ -118,6 +120,6 @@ describe("ProtoCoin Tests", function () {
     const instance = protoCoin.connect(otherAccount)
     await expect(
       instance.transferFrom(owner, otherAccount, 1)
-    ).to.be.revertedWith("Insufficient allowance.")
+    ).to.be.revertedWithCustomError(protoCoin, "ERC20InsufficientAllowance")
   })
 })
