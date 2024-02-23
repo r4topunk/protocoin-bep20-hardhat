@@ -1,13 +1,5 @@
-# Sample Hardhat Project
+# Protocoin Bep-20 HardHat
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+Contrato criado usando como base os contratos criados pela OpenZeppelin.
 
-Try running some of the following tasks:
-
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
-```
+Link para o contrato: https://testnet.bscscan.com/address/0x21d1900f306F5fe8306ff97a9cf117e3E0DA841E
