@@ -21,9 +21,16 @@ const config: HardhatUserConfig = {
         mnemonic: process.env.METAMASK_SECRET,
       },
     },
+    bsctest: {
+      url: "https://data-seed-prebsc-1-s1.binance.org:8545/",
+      chainId: 97,
+      accounts: {
+        mnemonic: process.env.METAMASK_SECRET,
+      },
+    },
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY,
+    apiKey: process.env.API_KEY,
   },
   sourcify: {
     enabled: true,
